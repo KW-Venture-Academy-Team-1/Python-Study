@@ -4,7 +4,7 @@ def solution(participant, completion):
     hash_table = {}
     
     for p in participant:
-        if p in bash_table:
+        if p in hash_table:
             hash_table[p] += 1
         # create new key if p doesn't exist in hash_table
         else:
@@ -12,7 +12,7 @@ def solution(participant, completion):
             
     # remove completion list from the hash table
     for c in completion:
-        hasb_table[c] -= 1
+        hash_table[c] -= 1
         
     # non-completer has a value of 1 in the hash table
     for answer, value in hash_table.items():
