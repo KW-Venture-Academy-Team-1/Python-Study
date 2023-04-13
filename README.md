@@ -1,2 +1,2 @@
 # Python-Study
-IT Venture Academy Team 1 Project in KWU
+Project by IT Venture Academy Team 1 in KWU
