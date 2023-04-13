@@ -1,6 +1,6 @@
 # ponketmon with hash
 def solution(nums):
-  # create mon dictironary
+  # create mon dictionary
   mon = {}
   
   for num in nums:
