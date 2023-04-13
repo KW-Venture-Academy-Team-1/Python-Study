@@ -1,0 +1,30 @@
+import requests # html 문서를 가져오기 위한 패키지
+from bs4 import BeautifulSoup as bs # 복잡한 문서를 다루기 쉬운형태로 만들어주기 위한 것
+
+
+url = 'https://search.naver.com/search.naver?where=image&sm=tab_jum&query=%EA%B3%A0%EC%96%91%EC%9D%B4'
+
+
+response = requests.get(url)
+html_text = response.text
+
+soup = bs(html_text, 'html.parser')
+
+# 고양이 사진이 담긴 class 이름
+images = soup.select('img')
+
+
+for i,img in enumerate(images):
+    # 저장할 위치와 이름
+    savename = r'C:\Users\USER\Downloads\image\img'+'%s.png'%i
+
+    src = img['src']
+    print(src)
+    mem = requests.get(src).content
+
+    with open(savename, "wb") as f:
+        f.write(mem)
+        print(i+1,"번째 사진 저장완료!")
+
+    if i == 9:
+        break
