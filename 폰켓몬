@@ -6,7 +6,7 @@ def solution(nums):
     for p in nums:
         if not (p in ponketmon):
             ponketmon[p] = 0
-            ponketmon[p]  += 1
+        ponketmon[p]  += 1
     
     print(ponketmon)
 
