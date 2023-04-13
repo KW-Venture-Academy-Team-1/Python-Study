@@ -1,0 +1,24 @@
+def solution(participant, completion):
+    answer = ''
+    hash_ = {}
+    for p in participant:
+        hash_[p] = 0
+    print(hash_)
+    
+    for p in participant:
+        hash_[p] += 1
+    print(hash_)
+    
+    for c in completion:
+        hash_[c] -=1
+    print(hash_)
+    
+    for k, v in hash_.items():
+        if v == 1:
+            return k
+        
+
+
+
+        
+        
