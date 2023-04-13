@@ -10,7 +10,7 @@ def solution(nums):
       # if num exists in mon, value+=1
       else:
           mon[num] += 1
-  # The length of mon is the maximum number of different types of pocketmon.
+  # The length of mon is the maximum number of different types of poncketmon.
   answer = min(len(nums)/2, len(mon))
   
   return answer
