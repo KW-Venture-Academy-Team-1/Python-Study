@@ -6,6 +6,7 @@ def solution(participant, completion):
     for p in participant:
         if p in bash_table:
             hash_table[p] += 1
+        # create new key if p doesn't exist in hash_table
         else:
             hash_table[p] = 1
             
