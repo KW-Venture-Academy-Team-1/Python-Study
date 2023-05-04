@@ -1,0 +1,20 @@
+def solution(genres, plays):
+    answer = []
+    dic = {} #장르-곡재생수리스트 
+    dic2 = {} #장르-곡재생수,고유번호리스트
+    
+    for i in range(len(genres)): #딕셔너리들 초기화
+        dic[genres[i]] = dic.get(genres[i], []) + [plays[i]]
+        dic2[genres[i]] = dic2.get(genres[i], []) + [(plays[i],i)]
+    
+    #value인 리스트의 합으로 정렬
+    dic = sorted(dic.items(), key = lambda x: -sum(x[1]))
+    #value인 리스트에서 곡재생수 내림차순, 고유번호 오름차순
+    for i in dic2:
+        dic2[i] = sorted(dic2[i], key = lambda x: (-x[0], x[1]))
+    #print(dic)
+    #print(dic2)
+    for data in dic: #dic2의 각 value 리스트를 2개로 자르고 그중 고유번호만 뽑아서 answer에 추가
+        answer += [data for (play, data) in dic2[data[0]][:2]]
+
+    return answer
