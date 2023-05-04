@@ -1,0 +1,19 @@
+def solution(phone_book):
+    answer = True
+    
+    dic = {}
+    for phone_num in phone_book:
+        dic[phone_num] = 1
+    
+    print(dic)
+    
+    for phone_num in phone_book:
+        tem = ''
+        for p in phone_num:
+            tem += p
+            print(tem)
+            if tem in dic and tem != phone_num:
+                answer = False
+                break
+            
+    return answer
