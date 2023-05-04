@@ -1,0 +1,20 @@
+def solution(clothes):
+    answer = 1
+    dic = {}
+
+    # 의상 종류를 key로 하고 개수를 value 로 하는 딕셔너리 생성
+    for _ ,type in clothes:
+        if type in dic:
+            dic[type] += 1
+        else:
+            dic[type] = 1
+    print(dic)
+    
+    # 착용할 수 있는 경우의 수를 더해줌 
+    # ex 	{'headgear': 2, 'eyewear': 1} -> 모자 2개 에서는 모자 두개를 각각 쓸 확률과 아예 안쓸 확률을 계산 -> 3C1
+    #                                     -> 안경 하나는 쓸 확률과 안쓸 확률 계산                           -> 2C1 
+    for k in dic:
+        answer *= (dic[k]+1) # 모든 확률을 곱해준다 3C1 * 2C1
+        
+        
+    return answer-1         # 아무것도 착용 안하는 경우의 수를 빼준다.
