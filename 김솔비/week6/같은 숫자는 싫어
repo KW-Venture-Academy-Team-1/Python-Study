@@ -1,0 +1,11 @@
+def solution(arr):
+    answer = []
+    
+    for i in range(len(arr)):
+        if i == 0: 
+            answer.append(arr[i]) 
+            #i가 제일 처음인 경우 무조건 append
+        elif arr[i] != arr[i-1]:
+            answer.append(arr[i]) 
+            #i를 조사할 때 i-1과 같지 않으면 append   
+    return answer
