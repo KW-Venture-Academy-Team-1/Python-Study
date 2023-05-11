@@ -1,0 +1,20 @@
+def solution(s):
+    answer = False
+    stack = []
+    # 문자 하나하나 list 에 추가해주면서 하나의 괄호가 생성되면 끝에서 두번째 괄호 두개를 빼준다.
+    for s_ in s:
+        stack.append(s_)
+    # list 안의 하나 이하로 들어있으면 넘어간다.
+        if len(stack) < 2:
+            pass        
+    # 괄호가 닫히면서 끝나고 전 괄호랑 같지 않으면 빼준다.
+        elif stack[-2] != s_ and s_ == ')':
+            stack.pop(-2)
+            stack.pop(-1)
+        print(stack)
+    if not stack:
+        answer =True
+        
+    return answer
+    
+    
