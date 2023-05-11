@@ -1,0 +1,22 @@
+import math
+
+def solution(progresses, speeds):
+    # 각 작업이 배포되는데 필요한 일수를 계산하여 큐에 저장
+    queue = []
+    for progress, speed in zip(progresses, speeds):
+        days = math.ceil((100 - progress) / speed)
+        queue.append(days)
+
+    # 각 배포마다 함께 배포되는 작업의 수를 계산하여 리스트에 저장
+    answer = []
+    while queue:
+        # 큐에서 가장 앞에 있는 작업을 꺼냄
+        first = queue.pop(0)
+        count = 1
+        # 큐에서 가장 앞에 있는 작업과 함께 배포될 수 있는 작업의 수를 계산
+        while queue and queue[0] <= first:
+            queue.pop(0)
+            count += 1
+        answer.append(count)
+
+    return answer
