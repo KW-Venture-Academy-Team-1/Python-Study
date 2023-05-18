@@ -1,0 +1,18 @@
+def solution(priorities, location):
+    answer = 0
+
+    while len(priorities) != 0: # 배열의 길이가 0이 아닐때
+        if priorities[0] == max(priorities): # 대기 목록의 가장 앞에 잇는 것이 나머지 문서들 보다 중요도가 높은 경우
+            answer += 1
+            priorities.pop(0) # 가장 앞에 있는 것 삭제
+            if location == 0:
+                return answer
+            else:
+                location -= 1
+        else : # 대기목록의 가장 앞에 있는 것이 중요도가 높지 않은 경우
+            priorities.append(priorities.pop(0)) # 문서를 대기목록 맨 뒤로 이동
+            if location == 0:
+                location = len(priorities) - 1
+            else :
+                location -= 1
+    return answer
