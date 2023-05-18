@@ -1,0 +1,17 @@
+def solution(prices):
+    n = len(prices)
+    answer = [0] * n
+    stack = []
+    for i in range(n):
+        
+        while stack and prices[i] < stack[-1][1]: # 가격이 오르면(현재 주식 가격이 다음 주식 가격보다 작으면)
+            j, p = stack.pop()                    # j 에는 비교된 주식가격의 인덱스를, p 에는 주식 가격을 저장
+            answer[j] = i - j                     
+            # 현재 주식 가격보다 큰 주식 가격이 나올 때까지 기다리는 방식으로 유지되는 기간 저장
+            
+        stack.append((i, prices[i]))              # stack 에 비교해야할 다음 주식가격을 넣는다.
+        
+    while stack:                                   
+        j, p = stack.pop()                        
+        answer[j] = n - j - 1                     # 스택에 남아 있는 주식 가격들에 대해 유지 기간을 계산
+    return answer
