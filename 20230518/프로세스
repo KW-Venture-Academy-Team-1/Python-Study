@@ -1,0 +1,19 @@
+               
+def solution(priorities, location):
+    queue = [(p, i) for i, p in enumerate(priorities)]
+    print(queue,max(queue))
+    answer = 0
+    while queue:                            # queue 안이 빌 때 까지
+        max_priority = max(queue)[0]        # max(queue) -> 우선순위가 가장 높은 튜플을 반환
+                                            # max(queue)[0] -> 가장 높은 우선순위 
+        top_priority = queue.pop(0)         # 맨 왼쪽에 저장된 프로세스 반환
+        if top_priority[0] == max_priority: # 꺼낸 프로세스의 우선순위가 가장높은 우선순위라면
+            answer += 1                     # 실행 번호 +1
+            if top_priority[1] == location: # 우리가 찾는 프로세서가 실행됐으면 실행번호 반환
+                return answer
+        else:                               # 가장 높은 우선 순위가 아니면 
+                                            # 프로그램 실행 불가 -> queue 가장 오른쪽에 다시 저장
+            queue.append(top_priority)  
+            
+    
+    
