@@ -1,0 +1,15 @@
+def solution(phone_book): 
+    hash_map = {} 
+    for nums in phone_book: 
+        hash_map[nums] = 1 //hash map 생성
+    
+   
+    for nums in phone_book: 
+        arr = "" 
+        for num in nums: 
+            arr += num //접두어가 hash map에 있는지 찾기 
+    
+            if arr in hash_map and arr != nums:       
+                return False //본인인 거 제외하기
+                
+    return True
