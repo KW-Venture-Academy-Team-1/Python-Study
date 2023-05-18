@@ -1,0 +1,23 @@
+from collections import deque
+
+def solution(bridge_length, weight, truck_weights):
+    times = 0 
+    bridge = deque([0] * bridge_length, maxlen=bridge_length) # 다리 길이 만큼 0 을 list 로 저장 
+    trucks = deque(truck_weights)                             # 트럭의 무게를 저장 [7,4,5,6]
+    current_weight = 0                                        # 다리 위에 있는 트럭의 무게를 저장하기 위한 곳
+    
+    while trucks:
+        current_weight -= bridge[0]                           # 다리를 다 건넌 트럭의 무게를 다리 위의 트럭 무게에서 빼줌
+        bridge.popleft()                                      # 다리list 의 맨 왼쪽을 꺼낸다.
+        
+        if current_weight + trucks[0] <= weight:              # 현재 다리위의 트럭 무게와 새로운 트럭의 무게가 한계보다 작음
+            current_weight += trucks[0]                       # 새로운 트럭 무게를 더해주고
+            bridge.append(trucks.popleft())                   # 다리위에 트럭을 저장해준다.
+
+        else:                                                 # 한계를 넘으면
+            bridge.append(0)                                  # 0 을 추가해준다.
+            
+        times += 1                                            # 시간을 계산하기 위함
+    
+    times += bridge_length                                    # 마지막 트럭이 다리를 지난 후 다리의 길이만큼 시간이 추가됨
+    return times
